@@ -85,13 +85,34 @@ def main():
             print(f"{i + 1}: {person1} and {person2} starred in {movie}")
 
 
-def shortest_path(source, target):
+def shortest_path(self, source, target):
     """
     Returns the shortest list of (movie_id, person_id) pairs
     that connect the source to the target.
 
     If no possible path, returns None.
     """
+
+    # Keep track of number of states explored
+    self.num_explored = 0
+
+    # Initialize frontier to just the starting position
+    start = Node(state=source, parent=None, action=None)
+    frontier = QueueFrontier()
+    frontier.add(start)
+
+    # Start with an empty explored set
+    self.explored = set()
+
+    # Keep looping until solution found
+    while True:
+
+        # If nothing left in frontier, then no path
+        if frontier.empty():
+            raise Exception("no solution")
+        
+        # test
+
 
     # TODO
     raise NotImplementedError
