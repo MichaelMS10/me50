@@ -1,6 +1,6 @@
 import csv
 import sys
-#comment
+#Test from work computer
 
 from util import Node, StackFrontier, QueueFrontier
 
@@ -93,9 +93,30 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
 
+    # Keep track of number of states explored
+    num_explored = 0
+
+    # Initialize frontier to just the starting position
+    start = Node(state=source, parent=None, action=None)
+    frontier = QueueFrontier()
+    frontier.add(start)
+       
+    # Start with an empty explored set
+    explored = set()
+    """
+    # Keep looping until solution found
+    while True:
+
+        # If nothing left in frontier, then no path
+        if frontier.empty():
+            raise Exception("no solution")
+        
+        # test
+
+
     # TODO
     raise NotImplementedError
-
+    """
 
 def person_id_for_name(name):
     """
