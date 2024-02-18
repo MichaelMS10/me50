@@ -103,7 +103,7 @@ def shortest_path(source, target):
        
     # Start with an empty explored set
     explored = set()
-    """
+    
     # Keep looping until solution found
     while True:
 
@@ -111,12 +111,29 @@ def shortest_path(source, target):
         if frontier.empty():
             raise Exception("no solution")
         
-        # test
+        # Choose a node from the frontier
+        node = frontier.remove()
+        num_explored += 1
 
+        # If node is the goal, then we have a solution
+        if node.state == target:
+            actions = []
+            cells = []
+            while node.parent is not None:
+                actions.append(node.action)
+                cells.append(node.state)
+                node = node.parent
+            actions.reverse()
+            cells.reverse()
+            solution = (actions, cells)
+            return solution
+        
+        # Marks node as explored
+        explored.add(node.state)
 
     # TODO
     raise NotImplementedError
-    """
+    
 
 def person_id_for_name(name):
     """
