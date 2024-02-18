@@ -117,17 +117,11 @@ def shortest_path(source, target):
 
         # If node is the goal, then we have a solution
         if node.state == target:
-            actions = []
-            cells = []
-            # degrees []
+            degrees = []
             while node.parent is not None:
-                # degrees.append(node.action, node.state)
-                actions.append(node.action)
-                cells.append(node.state)
+                degrees.append((node.action, node.state))
                 node = node.parent
-            actions.reverse()
-            cells.reverse()
-            solution = (actions, cells)
+            solution = (degrees)
             return solution
         
         # Marks node as explored
