@@ -119,7 +119,9 @@ def shortest_path(source, target):
         if node.state == target:
             actions = []
             cells = []
+            # degrees []
             while node.parent is not None:
+                # degrees.append(node.action, node.state)
                 actions.append(node.action)
                 cells.append(node.state)
                 node = node.parent
@@ -130,6 +132,13 @@ def shortest_path(source, target):
         
         # Marks node as explored
         explored.add(node.state)
+
+        # Add neighbors to frontier
+        for action, state in neighbors_for_person(node.state):
+            if not frontier.contains_state(state) and state not in explored:
+                child = Node(state=state, parent=node, action=action)
+                frontier.add(child)
+        
 
     # TODO
     raise NotImplementedError
