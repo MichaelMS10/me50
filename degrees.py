@@ -1,6 +1,5 @@
 import csv
 import sys
-#Test from work computer
 
 from util import Node, StackFrontier, QueueFrontier
 
@@ -77,6 +76,7 @@ def main():
     else:
         degrees = len(path)
         print(f"{degrees} degrees of separation.")
+        path = list(reversed(path))
         path = [(None, source)] + path
         for i in range(degrees):
             person1 = people[path[i][1]]["name"]
@@ -109,7 +109,7 @@ def shortest_path(source, target):
 
         # If nothing left in frontier, then no path
         if frontier.empty():
-            raise Exception("no solution")
+            return None
         
         # Choose a node from the frontier
         node = frontier.remove()
